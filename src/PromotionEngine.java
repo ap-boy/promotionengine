@@ -18,12 +18,7 @@ public class PromotionEngine {
         int total = 0;
 
         if(countActivePromotionA > 0) {
-            int additionalPromotionA = (countActivePromotionA % numberActivePromotionA);
-            if(additionalPromotionA > 0) {
-                total = total + (additionalPromotionA * UNITPRICE_A);
-                countActivePromotionA = countActivePromotionA - additionalPromotionA;
-            }
-            total = total + ((countActivePromotionA / numberActivePromotionA) * PROMOTION_PRICE_A);
+            total = calculateTotalPromotionA(total);
         }
         if(countActivePromotionB > 0) {
             total = total + (countActivePromotionB * UNITPRICE_B);
@@ -36,6 +31,30 @@ public class PromotionEngine {
         }
 
         return total;
+    }
+
+    private int calculateTotalPromotionA(int total) {
+        int nonPromotionItemsPromotionA = getNonPromotionItemsPromotionA();
+        if(isNonPromotionItemsForSKU(nonPromotionItemsPromotionA)) {
+            total = getTotalForNonPromotionItems(total, nonPromotionItemsPromotionA);
+        }
+        total = total + ((countActivePromotionA / numberActivePromotionA) * PROMOTION_PRICE_A);
+        return total;
+    }
+
+    private int getTotalForNonPromotionItems(int total, int additionalPromotionA) {
+        total = total + (additionalPromotionA * UNITPRICE_A);
+        countActivePromotionA = countActivePromotionA - additionalPromotionA;
+        return total;
+    }
+
+    private boolean isNonPromotionItemsForSKU(int additionalPromotion) {
+        return additionalPromotion > 0;
+    }
+
+    private int getNonPromotionItemsPromotionA() {
+        int nonPromotionItemsPromotionA = (countActivePromotionA % numberActivePromotionA);
+        return nonPromotionItemsPromotionA;
     }
 
     public void setCountActivePromotionA(int countActivePromotionA) {
