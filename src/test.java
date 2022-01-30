@@ -54,4 +54,12 @@ public class test {
         Assert.assertThat(promotionEngine.calculateTotalPrice(), is(45));
     }
 
+    @Test
+    void getTotalPrice_whenPromotionCAndD_AreInitialisedWithCountOf1_returnValueOf_PROMOTION_PRICE_C_AND_D() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionC(1);
+        promotionEngine.setCountActivePromotionD(1);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(30));
+    }
+
 }
