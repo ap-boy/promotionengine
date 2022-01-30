@@ -2,7 +2,7 @@ public class PromotionEngine {
 
     private static int UNITPRICE_A = 50;
     private static int UNITPRICE_B = 30;
-    private static int UNITPRICE_C = 30;
+    private static int UNITPRICE_C = 20;
 
     private int countActivePromotionA = 0;
     private int countActivePromotionB = 0;
@@ -16,6 +16,9 @@ public class PromotionEngine {
         }
         if(countActivePromotionB > 0) {
             total = total + (countActivePromotionB * UNITPRICE_B);
+        }
+        if(countActivePromotionC > 0) {
+            total = total + (countActivePromotionC * UNITPRICE_C);
         }
 
         return total;
