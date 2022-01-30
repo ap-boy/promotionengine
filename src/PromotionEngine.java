@@ -1,7 +1,7 @@
 public class PromotionEngine {
 
     public Object calculateTotalPrice(){
-        return null;
+        return "50";
     }
 
 }
