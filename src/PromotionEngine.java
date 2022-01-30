@@ -29,7 +29,6 @@ public class PromotionEngine {
 
         if(countActivePromotionC > 0 && countActivePromotionD > 0) {
             total = calculateTotalForPromotionCAndPromotionDCombo(total);
-
         } else if(countActivePromotionC > 0) {
             total = total + (countActivePromotionC * UNITPRICE_C);
         } else if(countActivePromotionD > 0) {
@@ -76,7 +75,6 @@ public class PromotionEngine {
 
     private int getTotalForNonPromotionItems(int total, int additionalPromotion, int unitPrice) {
         total = total + (additionalPromotion * unitPrice);
-        //countActivePromotionA = countActivePromotionA - additionalPromotion;
         return total;
     }
 
@@ -87,11 +85,6 @@ public class PromotionEngine {
     private int getNonPromotionItemsPromotion(int countActivePromotion, int numberActivePromotion ) {
         int nonPromotionItemsPromotion = (countActivePromotion % numberActivePromotion);
         return nonPromotionItemsPromotion;
-    }
-
-    private int getNonPromotionItemsPromotionB() {
-        int nonPromotionItemsPromotionA = (countActivePromotionA % numberActivePromotionA);
-        return nonPromotionItemsPromotionA;
     }
 
     public void setCountActivePromotionA(int countActivePromotionA) {
@@ -109,5 +102,4 @@ public class PromotionEngine {
     public void setCountActivePromotionD(int countActivePromotionD) {
         this.countActivePromotionD = countActivePromotionD;
     }
-
 }
