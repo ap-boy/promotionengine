@@ -33,4 +33,11 @@ public class test {
         Assert.assertThat(promotionEngine.calculateTotalPrice(), is(15));
     }
 
+    @Test
+    void getTotalPrice_whenPromotionA_IsInitialisedWithCountOf3_returnsValueOf_PROMOTION_PRICE_A() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionA(3);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(130));
+    }
+
 }
