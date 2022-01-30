@@ -19,4 +19,11 @@ public class test {
         Assert.assertThat(promotionEngine.calculateTotalPrice(), is(30));
     }
 
+    @Test
+    void getTotalPrice_whenInitialisedWithCPromotion_returnsValueOfPromotionC() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionC(1);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(20));
+    }
+
 }
