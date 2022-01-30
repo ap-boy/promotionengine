@@ -22,6 +22,9 @@ public class PromotionEngine {
         if(countActivePromotionC > 0) {
             total = total + (countActivePromotionC * UNITPRICE_C);
         }
+        if(countActivePromotionD > 0) {
+            total = total + (countActivePromotionD * UNITPRICE_D);
+        }
 
         return total;
     }
