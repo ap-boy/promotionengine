@@ -3,10 +3,12 @@ public class PromotionEngine {
     private static int UNITPRICE_A = 50;
     private static int UNITPRICE_B = 30;
     private static int UNITPRICE_C = 20;
+    private static int UNITPRICE_D = 15;
 
     private int countActivePromotionA = 0;
     private int countActivePromotionB = 0;
     private int countActivePromotionC = 0;
+    private int countActivePromotionD = 0;
 
     public int calculateTotalPrice(){
         int total = 0;
@@ -34,6 +36,10 @@ public class PromotionEngine {
 
     public void setCountActivePromotionC(int countActivePromotionC) {
         this.countActivePromotionC = countActivePromotionC;
+    }
+
+    public void setCountActivePromotionD(int countActivePromotionD) {
+        this.countActivePromotionD = countActivePromotionD;
     }
 
 }
