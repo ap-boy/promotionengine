@@ -28,21 +28,7 @@ public class PromotionEngine {
         }
 
         if(countActivePromotionC > 0 && countActivePromotionD > 0) {
-            //C & D for 30
-            if(countActivePromotionC == countActivePromotionD) {
-                total = total + (countActivePromotionC * 30);
-            } else if(countActivePromotionC > countActivePromotionD) { //5 - 2
-                //then calculate the total and use the modulus to add the extra
-                int numberAdditionalC = countActivePromotionC - countActivePromotionD; //3%2 5%2
-                total = total + (numberAdditionalC * UNITPRICE_C);
-
-                total = total + (countActivePromotionD * PROMOTION_PRICE_C_AND_D);
-            } else if(countActivePromotionD > countActivePromotionC){
-                int numberAdditionalD = countActivePromotionD - countActivePromotionC; //3%2 5%2
-                total = total + (numberAdditionalD * UNITPRICE_D);
-
-                total = total + (countActivePromotionC * PROMOTION_PRICE_C_AND_D);
-            }
+            total = calculateTotalForPromotionCAndPromotionDCombo(total);
 
         } else if(countActivePromotionC > 0) {
             total = total + (countActivePromotionC * UNITPRICE_C);
@@ -50,6 +36,21 @@ public class PromotionEngine {
             total = total + (countActivePromotionD * UNITPRICE_D);
         }
 
+        return total;
+    }
+
+    private int calculateTotalForPromotionCAndPromotionDCombo(int total) {
+        if(countActivePromotionC == countActivePromotionD) {
+            total = total + (countActivePromotionC * PROMOTION_PRICE_C_AND_D);
+        } else if(countActivePromotionC > countActivePromotionD) {
+            int numberAdditionalC = countActivePromotionC - countActivePromotionD;
+            total = total + (numberAdditionalC * UNITPRICE_C);
+            total = total + (countActivePromotionD * PROMOTION_PRICE_C_AND_D);
+        } else if(countActivePromotionD > countActivePromotionC){
+            int numberAdditionalD = countActivePromotionD - countActivePromotionC;
+            total = total + (numberAdditionalD * UNITPRICE_D);
+            total = total + (countActivePromotionC * PROMOTION_PRICE_C_AND_D);
+        }
         return total;
     }
 
