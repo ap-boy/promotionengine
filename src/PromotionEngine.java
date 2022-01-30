@@ -7,6 +7,7 @@ public class PromotionEngine {
 
     private static int PROMOTION_PRICE_A = 130;
     private static int PROMOTION_PRICE_B = 45;
+    private static int PROMOTION_PRICE_C_AND_D = 30;
 
     private int countActivePromotionA = 0;
     private int countActivePromotionB = 0;
@@ -28,6 +29,21 @@ public class PromotionEngine {
 
         if(countActivePromotionC > 0 && countActivePromotionD > 0) {
             //C & D for 30
+            if(countActivePromotionC == countActivePromotionD) {
+                total = total + (countActivePromotionC * 30);
+            } else if(countActivePromotionC > countActivePromotionD) { //5 - 2
+                //then calculate the total and use the modulus to add the extra
+                int numberAdditionalC = countActivePromotionC - countActivePromotionD; //3%2 5%2
+                total = total + (numberAdditionalC * UNITPRICE_C);
+
+                total = total + (countActivePromotionD * PROMOTION_PRICE_C_AND_D);
+            } else if(countActivePromotionD > countActivePromotionC){
+                int numberAdditionalD = countActivePromotionD - countActivePromotionC; //3%2 5%2
+                total = total + (numberAdditionalD * UNITPRICE_D);
+
+                total = total + (countActivePromotionC * PROMOTION_PRICE_C_AND_D);
+            }
+
         } else if(countActivePromotionC > 0) {
             total = total + (countActivePromotionC * UNITPRICE_C);
         } else if(countActivePromotionD > 0) {
