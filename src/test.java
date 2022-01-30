@@ -70,4 +70,32 @@ public class test {
         Assert.assertThat(promotionEngine.calculateTotalPrice(), is(120));
     }
 
+    @Test
+    void getTotalPrice_whenScenarioAIsInitialized_returnValueOf_ScenarioA() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionA(1);
+        promotionEngine.setCountActivePromotionB(1);
+        promotionEngine.setCountActivePromotionC(1);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(100));
+    }
+
+    @Test
+    void getTotalPrice_whenScenarioBIsInitialized_returnValueOf_ScenarioB() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionA(5);
+        promotionEngine.setCountActivePromotionB(5);
+        promotionEngine.setCountActivePromotionC(1);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(370));
+    }
+
+    @Test
+    void getTotalPrice_whenScenarioCIsInitialized_returnValueOf_ScenarioC() {
+        PromotionEngine promotionEngine = new PromotionEngine();
+        promotionEngine.setCountActivePromotionA(3);
+        promotionEngine.setCountActivePromotionB(5);
+        promotionEngine.setCountActivePromotionC(1);
+        promotionEngine.setCountActivePromotionD(1);
+        Assert.assertThat(promotionEngine.calculateTotalPrice(), is(280));
+    }
+
 }
